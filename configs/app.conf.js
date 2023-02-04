@@ -14,6 +14,9 @@ module.exports = new (function () {
 			salt: "general-random-salt",
 			iterations: 10,
 			keyLen: 80,
+		},
+		jwt: {
+			secKey: "ABCDKALIPEREFGHZWKVUTSRQPONNMLJI0987654321",
 		}
 	};
 })();

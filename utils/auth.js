@@ -9,7 +9,7 @@ exports.isAuthenticated = function (req, res, cb) {
 		auth = auth.substring(7);
 	}
 	auth = auth.trim();
-	if (!jwt.verify(auth))
+	if (!jwt.verify(auth, conf.crypto.jwt.secKey))
 		return send.unauthorized(res, "token expired");
 	req.user = jwt.decode(auth);
 	cb(null, req, res);
