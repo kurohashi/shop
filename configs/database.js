@@ -18,9 +18,7 @@ class Database {
     }, {
       key: { price: 1 },
     }, {
-      key: { category: "text" }
-    }, {
-      key: { name: "text" }
+      key: { category: "text", name: "text" }
     }]);
 
     let customers = db.collection("customers");
