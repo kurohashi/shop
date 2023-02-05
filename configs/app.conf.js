@@ -19,4 +19,27 @@ module.exports = new (function () {
 			secKey: "ABCDKALIPEREFGHZWKVUTSRQPONNMLJI0987654321",
 		}
 	};
+
+	
+	this.limits = {
+		products: 50,
+	};
+
+	this.allowedFields = ((type, data) => {
+		let mapper = {};
+		return mapper[type];
+	});
+
+	this.requiredFields = ((type, data) => {
+		let mapper = {
+			product: ["sku", "name", "category", "count", "price"],
+			customer: ["phone", "name", "sex", "address"],
+		};
+		return mapper[type];
+	});
+
+	this.auth = {
+		update: ["agent", "admin"],
+		admin: ["admin"],
+	};
 })();

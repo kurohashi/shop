@@ -3,12 +3,10 @@ var crypto = require("crypto");
 var send = require("../configs/response.conf");
 var conf = require("../configs/app.conf");
 var moment = require("moment-timezone");
-var useragent = require("express-useragent");
-var request = require("request");
 let console = conf.console;
 
 module.exports = {
-	createId, authFailed, preupdate, ISODate, regex,
+	createId, authFailed, preupdate, ISODate, regex, createHash, filterData, validate,
 }
 
 function regex(val, type) {
@@ -70,4 +68,33 @@ function createId(type, len) {
 function createHash(key, type) {
 	type = type || "gen";
 	return Buffer.from(crypto.pbkdf2Sync(key, conf.crypto[type].salt, conf.crypto[type].iterations, conf.crypto[type].keyLen, "SHA256"), 'binary').toString('base64');
+}
+
+/**
+ * Filter data based on type
+ * @param {*} data 
+ * @param {*} type 
+ */
+async function filterData(data, type) {
+	let result = {};
+	let allowedFields = conf.allowedFields(type, data) || [];
+	allowedFields.forEach(fld => {
+		if (fld in data)
+			result[fld] = data[fld];
+	});
+	return result;
+}
+
+/**
+ * Validate the data based on the type
+ * @param {*} data 
+ * @param {*} type 
+ */
+async function validate(data, type) {
+	let requiredFields = conf.requiredFields(type, data) || [];
+	for (let i of requiredFields) {
+		if (!data.hasOwnProperty(i))
+			return false;
+	}
+	return true;
 }
