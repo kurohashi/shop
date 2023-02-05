@@ -17,3 +17,5 @@ Its a backend service for FMCG shop
 1. Run ``` npm install ```.
 2. Start the service using ``` node server.js ```.
 3. The server will run on port ``` 10001 ```.
+
+### SwaggerDoc Pending...
