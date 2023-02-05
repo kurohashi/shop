@@ -22,5 +22,10 @@ module.exports = {
 		if (!conf.auth.admin.includes(req.user.role))
 			return send.unauthorized(res, "user not authorized");
 		cb(null, req, res);
+	},
+	agentCustomerAuth: function (req, res, cb) {
+		if (!req.query.phone)
+			return send.invalid(res, "phone not provided");
+		cb(null, req, res);
 	}
 }

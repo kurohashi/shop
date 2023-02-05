@@ -19,10 +19,6 @@ function create(req, res) {
 		let data = req.body;
 		if (!(await lib.validate(data, "product")))
 			return send.invalid(res, "invalid data");
-		let sysData = {
-			id: lib.createId(null, 10),
-		};
-		Object.assign(data, sysData);
 		console.log("product inserting", JSON.stringify(data));
 		await conf.collections.products.insertOne(data);
 		return send.ok(res, data);

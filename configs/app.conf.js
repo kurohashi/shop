@@ -23,6 +23,7 @@ module.exports = new (function () {
 	
 	this.limits = {
 		products: 50,
+		customers: 10,
 	};
 
 	this.allowedFields = ((type, data) => {

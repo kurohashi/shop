@@ -11,8 +11,10 @@ module.exports = function (app) {
 	app.route("/purchase")
 		.post();
 	app.route("/customer")
-		.get(auth.isAdmin)
-		.post();
+		.get(auth.isAdmin, customers.read)
+		.post(customers.create)
+		.put(customers.update)
+		.delete(customers.remove);
 }
 
 
