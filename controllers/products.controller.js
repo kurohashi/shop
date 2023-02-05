@@ -10,7 +10,7 @@ module.exports = {
 }
 
 /**
- * 
+ * Create a new product
  * @param {*} req 
  * @param {*} res 
  */
@@ -29,7 +29,7 @@ function create(req, res) {
 }
 
 /**
- * 
+ * Read all the products based in filters
  * @param {*} req 
  * @param {*} res 
  */
@@ -83,7 +83,9 @@ function read(req, res) {
 }
 
 /**
- * 
+ * Update an existing product
+ * eg:
+ * 		increasing the inventory of an item
  * @param {*} req 
  * @param {*} res 
  */
@@ -107,7 +109,7 @@ function update(req, res) {
 }
 
 /**
- * 
+ * Delete an existing product
  * @param {*} req 
  * @param {*} res 
  */
