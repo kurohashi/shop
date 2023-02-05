@@ -7,7 +7,7 @@ Its a backend service for FMCG shop
 2. Customer:
     ``` { id (unique), phone (unique), name, sex, address, etc } ```
 3. Purchases:
-    ``` { id (user id), sku (product id), ts (ms timestamp of purchase) } ```
+    ``` { customerId (customer id), sku (product id), agentId (agent who did the purchase), ts (ms timestamp of purchase) } ```
 
 ### Pre-requisites
 1. node 16

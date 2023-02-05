@@ -37,7 +37,12 @@ class Database {
     }]);
 
     let purchases = db.collection("purchases");
-    await purchases.createIndexes([{ key: { id: 1 } }, { key: { sku: 1 } }, { ts: -1 }]);
+    await purchases.createIndexes([
+      { key: { customerId: 1 } },
+      { key: { sku: 1 } },
+      { key: { agentId: 1 } },
+      { key: { ts: -1 } }
+    ]);
 
     conf.collections = {
       products: products,

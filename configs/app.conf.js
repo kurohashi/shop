@@ -21,7 +21,9 @@ module.exports = new (function () {
 	};
 
 	this.allowedFields = ((type, data) => {
-		let mapper = {};
+		let mapper = {
+			purchase: ["sku", "customerId", "agentId"],
+		};
 		return mapper[type];
 	});
 
@@ -29,6 +31,7 @@ module.exports = new (function () {
 		let mapper = {
 			product: ["sku", "name", "category", "count", "price"],
 			customer: ["phone", "name", "sex", "address"],
+			purchase: ["sku", "customerId", "agentId"],
 		};
 		return mapper[type];
 	});
